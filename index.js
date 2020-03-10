@@ -14,7 +14,7 @@ async function run() {
     const fillSymbol = core.getInput('fill-symbol');
     const octokit = new github.Github(process.env.GITHUB_TOKEN);
 
-    const { data: issue } = await octokit.issue.get({
+    const { data: issue } = await octokit.issues.get({
       owner: owner,
       repo: repo,
       issue_number: issueNumber

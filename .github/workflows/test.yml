@@ -7,19 +7,31 @@ on:
       - 'releases/*'
 
 jobs:
-  # unit tests
-  units:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - run: npm test
-
   # test action works running from the graph  
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: ./
+      id: issue-only-test
       with:
-        milliseconds: 1000
+        issue: 1
+    - run: echo ${{steps.issue-only-test.outputs.branch_name}}
+    - uses: ./
+      id: fill-symbol-test
+      with:
+        issue: 1
+        fill-symbol: '+'
+    - run: echo ${{steps.fill-symbol-test.outputs.branch_name}}
+    - uses: ./
+      id: prefix-test
+      with:
+        issue: 1
+        prefix: 'feature/'
+    - run: echo ${{steps.prefix-test.outputs.branch_name}}
+    - uses: ./
+      id: suffix-test
+      with:
+        issue: 1
+        suffix: '-bug'
+    - run: echo ${{steps.suffix-test.outputs.branch_name}}

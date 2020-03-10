@@ -18,9 +18,10 @@ async function run() {
       owner: owner,
       repo: repo,
       issue_number: issueNumber
-    }); 
+    });
 
-    const branchName = `${prefix}${issueNumber}-${issue.title}${suffix}`.replace(/[ ]+/g, fillSymbol)
+    const branchName = `${prefix}${issueNumber}-${issue.title}${suffix}`.replace(/[ ]+/g, fillSymbol);
+    core.info(`Generated branch name: ${branchName}`);
     core.setOutput('branch_name', branchName);
   } 
   catch (error) {

@@ -496,7 +496,7 @@ module.exports = require("os");
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
 const core = __webpack_require__(470);
-const github = __webpack_require__(469)
+const github = __webpack_require__(469);
 
 // most @actions toolkit packages have async methods
 async function run() {
@@ -509,7 +509,7 @@ async function run() {
     const prefix = core.getInput('prefix');
     const suffix = core.getInput('suffix');
     const fillSymbol = core.getInput('fill-symbol');
-    const octokit = new github.Github(process.env.GITHUB_TOKEN);
+    const octokit = new github.GitHub(process.env.GITHUB_TOKEN);
 
     const { data: issue } = await octokit.issues.get({
       owner: owner,

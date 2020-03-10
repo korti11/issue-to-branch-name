@@ -21,7 +21,7 @@ async function run() {
     });
 
     const branchName = `${prefix}${issueNumber}-${issue.title}${suffix}`.replace(/[ ]+/g, fillSymbol)
-    core.setOutput('branch-name', branchName);
+    core.setOutput('branch_name', branchName);
   } 
   catch (error) {
     core.setFailed(error.message);

@@ -1,13 +1,24 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Generate branch name for issue'
+description: 'Generates a branch name for a given issue number'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  issue:
+    description: 'Issue number.'
     required: true
-    default: '1000'
+  fill-symbol:
+    description: 'The symbol that replaces spaces in the issue title.'
+    required: true
+    default: '-'
+  prefix:
+    description: 'Text that gets put before the issue number.'
+    required: false
+    default: ''
+  suffix:
+    description: 'Text that gets put after the issue title.'
+    required: false
+    default: ''
 outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+  branch_name: # output will be available to future steps 
+    description: 'The generated branch name.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
